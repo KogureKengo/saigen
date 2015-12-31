@@ -12,15 +12,27 @@ new.html.erb
     <%= f.text_area :advice, placeholder: "advice", class: "form-control" %>
   </div>
 
-  <%= fields_for (@ingredient) do |b| %>
-    <div class="field">
-      <%= b.label :材料 %>
-      <%= b.text_field :name, placeholder: "材料名", class: "form-control" %>
-      <%= b.text_field :quantity, placeholder: "分量", class: "form-control" %>
-      <p class="recipe_p" >てすと</p>
+    <p class="recipe_p" >てすと</p>
       <input type="button" value="ボタン" class="recipe_button">
 
-    </div>
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <tr>
+             <th>材料</th>
+             <th>分量</th>
+             <th>ステップ</th>
+             <th>Action</th>
+          </tr>
+          <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
+              <td><%= q.text_field   :name,     class: 'form-control' %></td>
+              <td><%= q.text_field   :quantity, class: 'form-control' %></td>
+              <td><%= q.number_field   :step,     class: 'form-control' %></td>
+              <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+          <% end %>
+        </tbody>
+      </table>
+      <%= f.add_nested_fields_link :ingredients, 'Add new', class: 'btn btn-primary', role: 'button' %>
+
 
   <!-- 追加箇所 開始 -->
   <div class="field">
@@ -48,5 +60,4 @@ new.html.erb
     <%= f.submit %>
   </div>
 
-<% end %>
 <% end %>

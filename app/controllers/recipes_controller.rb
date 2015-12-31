@@ -16,15 +16,11 @@ class RecipesController < ApplicationController
 
   def create
     recipe = Recipe.create(recipe_create_params)
-    Ingredient.create(ingredient_create_params(recipe.id))
     redirect_to controller: :recipes, action: :index
   end
 
   private
   def recipe_create_params
-    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image).merge(user_id: current_user.id)
-  end
-  def ingredient_create_params(recipe_id)
-    params.require(:ingredient).permit(:name, :quantity).merge(recipe_id: recipe_id)
+    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image, ingredients_attributes: [:id, :recipe_id, :name, :quantity, :step]).merge(user_id: current_user.id)
   end
 end
