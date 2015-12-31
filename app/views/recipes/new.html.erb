@@ -1,0 +1,52 @@
+new.html.erb
+<%= form_for (@recipe) do |f| %>
+
+  <div class="field">
+    <%= f.label :レシピ名 %>
+    <%= f.text_field :title, placeholder: "レシピ名", class: "form-control" %>
+
+  </div>
+  <div class="field">
+    <%= f.label :概要 %>
+    <%= f.text_area :summary, placeholder: "概要", class: "form-control" %>
+    <%= f.text_area :advice, placeholder: "advice", class: "form-control" %>
+  </div>
+
+  <%= fields_for (@ingredient) do |b| %>
+    <div class="field">
+      <%= b.label :材料 %>
+      <%= b.text_field :name, placeholder: "材料名", class: "form-control" %>
+      <%= b.text_field :quantity, placeholder: "分量", class: "form-control" %>
+      <p class="recipe_p" >てすと</p>
+      <input type="button" value="ボタン" class="recipe_button">
+
+    </div>
+
+  <!-- 追加箇所 開始 -->
+  <div class="field">
+    <% if @recipe.image? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.image.url %>
+      </div>
+    <% end %><br>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.image? %>
+      <label>
+        <%= f.check_box :remove_image %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <!-- 追加箇所 終了 -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+<% end %>

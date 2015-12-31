@@ -47,5 +47,6 @@ group :development do
   #追加
   gem 'pry-rails'
   gem 'devise'
+  gem "carrierwave" #画像UP
 end
 

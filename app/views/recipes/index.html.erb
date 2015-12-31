@@ -1,1 +1,24 @@
 Hello SAIGEN !!
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>title:</strong>
+  <a href="/recipes/<%= @recipe.id %>" ><%= @recipe.title %></a>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @recipe.summary %>
+</p>
+
+<!-- 追加箇所 開始 -->
+<p>
+  <strong>Image:</strong>
+  <% if @recipe.image? %>
+    <div class="thumbnail">
+      <%= image_tag @recipe.image.url %>
+    </div>
+  <% end %>
+</p>
+<!-- 追加箇所 終了 -->

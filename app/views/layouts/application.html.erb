@@ -15,6 +15,28 @@
           <a href="/">SAIGEN</a>
         </li>
       </ul>
+      *
+      <a href="recipes/new">新規投稿</a>
+      *
+      <% if user_signed_in? %>
+        <li class="entry_button" style="float: right">
+        <%= link_to 'ログアウト', "/users/sign_out", method: :delete %>
+        </li>
+        <li class="entry_button" style="float: right">
+          <a href="/users/<%= current_user.id %>">マイページへ</a>
+        </li>
+        <li class="entry_button" style="float: right">
+          <a href="/recipes/new">投稿する</a>
+        </li>
+      <% else %>
+        <li class="entry_button" style="float: right">
+          <%= link_to 'ログイン', "/users/sign_in", method: :get %>
+        </li>
+        <li class="entry_button" style="float: right">
+          <a href="/recipes">検索</a>
+        </li>
+      <% end %>
+
     </nav>
   </div>
 
