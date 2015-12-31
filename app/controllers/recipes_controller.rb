@@ -7,7 +7,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @ingredient = Ingredient.new
   end
 
   def show
@@ -21,6 +20,6 @@ class RecipesController < ApplicationController
 
   private
   def recipe_create_params
-    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image, ingredients_attributes: [:id, :recipe_id, :name, :quantity, :step]).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image, ingredients_attributes: [:id, :recipe_id, :name, :quantity, :step], directions_attributes: [:id, :recipe_id, :step, :image, :image_cache, :remove_image, :text]).merge(user_id: current_user.id)
   end
 end
