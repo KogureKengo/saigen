@@ -49,5 +49,6 @@ group :development do
   gem 'devise'
   gem "carrierwave" #画像UP
   gem "nested_form_fields" #動的に複数モデルに保存
+  gem 'acts-as-taggable-on', '~> 3.4' #タグ
 end
 

@@ -12,6 +12,15 @@ Hello SAIGEN !!
   <%= @recipe.summary %>
 </p>
 
+<tbody>
+  <strong>TAG:</strong>
+  <!-- 巡回html -->
+  <tr>
+  <td><%= render 'recipes/tag_list', tag_list: @recipe.recipetag_list %></td>
+  </tr>
+</tbody>
+
+
 <!-- 追加箇所 開始 -->
 <p>
   <strong>Image:</strong>

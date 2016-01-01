@@ -81,6 +81,11 @@ new.html.erb
   </div>
   <!-- 追加箇所 終了 -->
 
+  <div class="field">
+    <%= f.label :recipetag_list, "タグ（カンマ区切り）" %><br>
+    <%= text_field_tag 'recipe[recipetag_list]', @recipe.recipetag_list.join(',') %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

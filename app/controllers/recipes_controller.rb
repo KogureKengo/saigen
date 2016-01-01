@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: :new
 
   def index
-    @recipe = Recipe.find(2)
+    @recipe = Recipe.find(31)
   end
 
   def new
@@ -20,6 +20,6 @@ class RecipesController < ApplicationController
 
   private
   def recipe_create_params
-    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image, ingredients_attributes: [:id, :recipe_id, :name, :quantity, :step], directions_attributes: [:id, :recipe_id, :step, :image, :image_cache, :remove_image, :text]).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:title, :summary, :advice, :image, :image_cache, :remove_image, :recipetag_list, ingredients_attributes: [:id, :recipe_id, :name, :quantity, :step], directions_attributes: [:id, :recipe_id, :step, :image, :image_cache, :remove_image, :text]).merge(user_id: current_user.id)
   end
 end
