@@ -4,8 +4,10 @@ new.html.erb
   <div class="field">
     <%= f.label :レシピ名 %>
     <%= f.text_field :title, placeholder: "レシピ名", class: "form-control" %>
-
+    <%= f.label :カテゴリID %>
+    <%= f.text_field :category_id, placeholder: "カテゴリID", class: "form-control" %>
   </div>
+
   <div class="field">
     <%= f.label :概要 %>
     <%= f.text_area :summary, placeholder: "概要", class: "form-control" %>

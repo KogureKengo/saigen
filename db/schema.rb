@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231232304) do
+ActiveRecord::Schema.define(version: 20160102082225) do
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id",  limit: 4
+    t.integer  "lft",        limit: 4
+    t.integer  "rgt",        limit: 4
+    t.text     "name",       limit: 65535
+  end
+
+  add_index "categories", ["lft"], name: "index_categories_on_lft", using: :btree
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+  add_index "categories", ["rgt"], name: "index_categories_on_rgt", using: :btree
 
   create_table "directions", force: :cascade do |t|
     t.integer  "recipe_id",  limit: 4
@@ -32,13 +45,14 @@ ActiveRecord::Schema.define(version: 20151231232304) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "title",      limit: 255
-    t.text     "summary",    limit: 65535
-    t.text     "advice",     limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.string   "title",       limit: 255
+    t.text     "summary",     limit: 65535
+    t.text     "advice",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image",      limit: 255
+    t.string   "image",       limit: 255
+    t.integer  "category_id", limit: 4
   end
 
   create_table "taggings", force: :cascade do |t|
