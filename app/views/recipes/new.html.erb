@@ -1,5 +1,24 @@
-new.html.erb
 <%= form_for (@recipe) do |f| %>
+
+<div class="menu_name">
+    レシピの投稿
+</div>
+
+<div class="index">
+
+  <div class="detail_photo">
+    <div class="detail_photo_flame">
+      <% if @recipe.image? %>
+        <%= image_tag (@recipe.image.url :class=>"image_new") %>
+      <% else %>
+        <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
+      <% end %>
+      <h1> <%= f.text_field :title, placeholder: "レシピ名を入力", class: "form_new" %> </h1>
+    </div>
+  </div>
+
+</div>
+
 
   <div class="field">
     <%= f.label :レシピ名 %>
@@ -23,6 +42,7 @@ new.html.erb
              <th>ステップ</th>
              <th>Action</th>
           </tr>
+
           <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
               <td><%= q.text_field   :name,     class: 'form-control' %></td>
               <td><%= q.text_field   :quantity, class: 'form-control' %></td>

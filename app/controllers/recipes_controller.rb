@@ -2,8 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: :new
 
   def index
-    @recipe = Recipe.find(31)
-    @category = Category.find(@recipe.category_id)
+    @recipes = Recipe.page(params[:page]).order("created_at DESC")
   end
 
   def new
@@ -18,6 +17,7 @@ class RecipesController < ApplicationController
     recipe = Recipe.create(recipe_create_params)
     redirect_to controller: :recipes, action: :index
   end
+
 
   private
   def recipe_create_params

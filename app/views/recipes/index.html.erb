@@ -1,38 +1,46 @@
-Hello SAIGEN !!
+<div>
+  <div class="menu_name">
+    新着一覧
+  </div>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>title:</strong>
-  <a href="/recipes/<%= @recipe.id %>" ><%= @recipe.title %></a>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @recipe.summary %>
-</p>
-
-<tbody>
-  <strong>TAG:</strong>
-  <!-- 巡回html -->
-  <tr>
-  <td><%= render 'recipes/tag_list', tag_list: @recipe.recipetag_list %></td>
-  </tr>
-</tbody>
-
-<p>
-  <strong>Category:</strong>
-  <%= @category.name %>
-</p>
+  <div class="index clearfix">
 
 
-<!-- 追加箇所 開始 -->
-<p>
-  <strong>Image:</strong>
-  <% if @recipe.image? %>
-    <div class="thumbnail">
-      <%= image_tag @recipe.image.url %>
+    <% @recipes.each do |recipe| %>
+      <div class="index_margin">
+        <div class="index_temp">
+          <div class="index_time">
+            <%= recipe.updated_at.to_s(:published_on) %>
+          </div>
+            <div class="index_photo">
+              <a href="/recipes/<%= recipe.id %>" class="linktxt"></a>
+              <div class="index_category">
+                <a href="/categories/index" class="right"><%= recipe.category.name %></a>
+              </div>
+              <% if recipe.image? %>
+                <%= image_tag (recipe.image.url :class=>"image_index") %>
+              <% else %>
+                <%= image_tag("noimage.png",:alt=>"noimage", :class=>"image_index") %>
+              <% end %>
+              <div class="index_about">
+                <a href="/recipes/<%= recipe.id %>" class="linktxt"></a>
+                <div class="index_title">
+                  <%= recipe.title %>
+                </div>
+                <div class="index_summary">
+                  <%= recipe.summary %>
+                </div>
+              </div>
+
+            </div>
+        </div>
     </div>
-  <% end %>
-</p>
-<!-- 追加箇所 終了 -->
+    <% end %>
+
+
+  </div>
+
+  <%= page_entries_info @recipes %>
+  <%= paginate @recipes %>
+
+</div>

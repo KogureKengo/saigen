@@ -6,42 +6,54 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
   <div class="globalnav__menu">
     <nav class="globalnav">
-      <ul class="gmenu">
-        <li class="logo" style="float: left">
-          <a href="/">SAIGEN</a>
+
+    <div class="logo">
+      <ul class='clearfix'>
+        <li class='left'>
+          <%= link_to(image_tag("logo.png",:alt=>"ロゴ", :class=>"img_logo"), {:controller => '/recipes', :action => 'index'}) %>
         </li>
+        <% if user_signed_in? %>
+          <li class='right'>
+            <%= link_to 'ログアウト', "/users/sign_out", method: :delete %>
+          </li>
+        <% else %>
+          <li class='right'>
+            <%= link_to 'ログイン', "/users/sign_in", method: :get %>
+          </li>
+        <% end %>
+          <li class='right'>
+            <%= link_to '投稿する', "/recipes/new", method: :get %>
+          </li>
       </ul>
-      *
-      <a href="/recipes/new">新規投稿</a>
-      *
-      <a href="/categories/index">カテゴリ</a>
-      <% if user_signed_in? %>
-        <li class="entry_button" style="float: right">
-        <%= link_to 'ログアウト', "/users/sign_out", method: :delete %>
-        </li>
-        <li class="entry_button" style="float: right">
-          <a href="/users/<%= current_user.id %>">マイページへ</a>
-        </li>
-        <li class="entry_button" style="float: right">
-          <a href="/recipes/new">投稿する</a>
-        </li>
-      <% else %>
-        <li class="entry_button" style="float: right">
-          <%= link_to 'ログイン', "/users/sign_in", method: :get %>
-        </li>
-        <li class="entry_button" style="float: right">
-          <a href="/recipes">検索</a>
-        </li>
-      <% end %>
+    </div>
+
+    <div class="div_menu">
+        <form accept-charset="UTF-8" action="" method="get">
+            <select id="area_id" class="select_menu" onchange="this.form.submit()">
+              <option selected="selected" value="/">メニュー</option>
+              <option value="/categories/index">Categoryから探す</option>
+            </select>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+      $(function(){
+          $('#area_id').change(function() {
+              $("form").attr('action', $(this).val());
+              $("form").submit();
+          });
+      });
+    </script>
 
     </nav>
   </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

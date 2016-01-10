@@ -15,6 +15,9 @@ window.addEventListener("load", function () {
   // 関数内で定義された関数は、関数の中でしか呼び出せないという性質があるだけで、
   // 通常の関数同様に呼び出せる
 
+  // recipes/index プルダウン
+
+
   btn.addEventListener("click", printHello);
 
   // または
@@ -24,3 +27,5 @@ window.addEventListener("load", function () {
 
 });
 // これを書かないとjsがすべて読み込まれない
+
+

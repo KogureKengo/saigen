@@ -11,4 +11,5 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :ingredients
   accepts_nested_attributes_for :directions
 
+
 end

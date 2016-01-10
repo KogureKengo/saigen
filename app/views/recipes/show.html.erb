@@ -1,3 +1,86 @@
-show.html.erb
+<div class="index">
 
-<p><%= @recipe.title %>の詳細ページ</p>
+  <div class="detail_photo clearfix">
+    <div class="detail_photo_flame">
+      <% if @recipe.image? %>
+        <%= image_tag (@recipe.image.url :class=>"image_detail") %>
+      <% else %>
+      <% end %>
+      <h1> <%= @recipe.title %> </h1>
+    </div>
+    <div class="detail">
+      <p> <%= @recipe.summary %> </p>
+      <div class="right">
+        カテゴリ：
+        <a href="/categories/index" ><%= @recipe.category.name %></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail">
+    <div class="detail_list">
+      <div class="detail_title">
+        <h2>材料</h2>
+      </div>
+      <div class="detail_ingredients">
+        <table class="detail_ingredients_table">
+          <tbody>
+            <% @recipe.ingredients.each do |ingredient| %>
+            <tr>
+                <td><%= ingredient.name %></td>
+                <td class="td_right"><%= ingredient.quantity %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail_list">
+      <div class="detail_title">
+        <h2>作り方</h2>
+      </div>
+      <div class="detail_ingredients">
+        <table class="detail_ingredients_table">
+          <tbody>
+            <% @recipe.directions.each do |direction| %>
+            <tr>
+              <td class="direction_td clearfix">
+                <div class="direction_td_text">
+                  <%= direction.step %>
+                  <%= direction.text %>
+                </div>
+                <% if direction.image? %>
+                  <%= image_tag (direction.image.url :class=>"") %>
+                <% else %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="advice">
+      <div class="advice_title">
+        <h3>アドバイス</h3>
+      </div>
+      <div class="advice_list">
+        <%= @recipe.advice %>
+      </div>
+    </div>
+
+    <div class="detail_tag">
+      <div class="detail_title">
+        <h3>タグ</h3>
+      </div>
+      <div class="tag_list">
+        <%= render 'recipes/tag_list', tag_list: @recipe.recipetag_list %>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
