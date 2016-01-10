@@ -1,4 +1,6 @@
+
 window.addEventListener("load", function () {
+
   var btn = document.querySelector(".recipe_button");
   i = 0;
   function printHello() {

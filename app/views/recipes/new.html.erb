@@ -24,8 +24,9 @@
               <%= image_tag @recipe.image.url %>
             </div>
           <% end %><br>
-          <%= f.file_field :image %>
+          <%= f.file_field :image, class: "recipe_button"%>
           <%= f.hidden_field :image_cache %>
+          <%= image_tag @recipe.image_url(:thumb) if @recipe.image? %>
         </div>
         <!-- 追加箇所 終了 -->
       </div>
@@ -73,7 +74,6 @@
     <%= f.text_area :advice, placeholder: "advice", class: "form-control" %>
   </div>
 
-    
 
       <table class="directions_table">
       <h3>作り方</h3>
