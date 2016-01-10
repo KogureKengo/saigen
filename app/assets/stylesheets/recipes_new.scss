@@ -17,15 +17,44 @@
   h2{
     margin: 0;
     font-size: large;
+    width: 95%;
+    padding: 3px; margin-bottom: 3px; border: 1px solid #E8D8C9; border-radius: 3px;
+    // border-color: #E8D8C9;
+  }
+
+  select{
+    width: 95%;
+    margin: 1em;
   }
 
 }
 
-.ingredients_table{
-}
-.form-control_step{
-  font-size: 2px;
-  width: 15px;
+.ingredients{
+  width: 95%;
+  .ingredients_table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: 0.5em;
+    .form-control_name{
+      width: 100%;
+    }
+    td{
+      text-align: center;
+      input{
+        line-height: 2em;
+        height: 2em;
+      }
+      img{
+        width: 100%;
+      }
+    }
+    .form-control_number{
+      width: 2em;
+    }
+  }
+  .add_button{
+    text-align: center;
+  }
 }
 
 

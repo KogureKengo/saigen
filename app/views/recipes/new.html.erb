@@ -26,7 +26,6 @@
           <% end %><br>
           <%= f.file_field :image, class: "recipe_button"%>
           <%= f.hidden_field :image_cache %>
-          <%= image_tag @recipe.image_url(:thumb) if @recipe.image? %>
         </div>
         <!-- 追加箇所 終了 -->
       </div>
@@ -37,79 +36,82 @@
         <h2>説明</h2>
         <%= f.text_area :summary, placeholder: "説明を入力", class: "form-control" %>
       </div>
+
+      <div class="summary">
+        <h2>カテゴリ</h2>
+        <%= f.collection_select :category_id, Category.all, :id, :name, :class=>"select_menu"%>
+      </div>
+
+      <h2>材料</h2>
       <div class="ingredients">
-        <h2>材料</h2>
         <table class="ingredients_table">
           <tbody>
-            <tr>
-               <th>ステップ</th>
-               <th>材料</th>
-               <th>分量</th>
-               <th>Action</th>
-            </tr>
             <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
-                <td><%= q.number_field   :step,     class: 'form-control_step' %></td>
-                <td><%= q.text_field   :name,     class: 'form-control_name' %></td>
-                <td><%= q.text_field   :quantity, class: 'form-control_name' %></td>
-                <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button01' %></td>
+                <td><%= q.text_field   :name, placeholder: "材料", class: 'form-control_name' %></td>
+                <td><%= q.text_field   :quantity, placeholder: "分量", class: 'form-control_name' %></td>
+                <td><%= q.remove_nested_fields_link '☓', class: 'form-control_name', role: 'button01' %></td>
             <% end %>
           </tbody>
         </table>
-        <%= f.add_nested_fields_link :ingredients, 'Add new', class: 'btn btn-primary', role: 'button01' %>
+        <div class="add_button">
+          <%= f.add_nested_fields_link :ingredients, '材料を追加', class: '', role: 'button01' %>
+        </div>
       </div>
+
+      <h2>作り方</h2>
+      <div class="ingredients">
+        <table class="ingredients_table">
+          <tbody>
+
+            <%= f.nested_fields_for :directions, wrapper_tag: :tr do |r| %>
+              <td>
+                <%= r.number_field   :step, placeholder: "1",class: 'form-control_number' %>
+              </td>
+              <td>
+                <%= r.text_field   :text, placeholder: "説明", class: 'form-control_name' %>
+                <div class="field">
+                  <% if @recipe.image? %>
+                    <%= image_tag (@recipe.image.url :class=>"image_new") %>
+                  <% else %>
+                    <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
+                  <% end %>
+                  <%= r.file_field :image %>
+                  <%= r.hidden_field :image_cache %>
+                </div>
+              </td>
+              <td><%= r.remove_nested_fields_link '☓', class: 'form-control_name', role: 'button02' %></td>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="add_button">
+          <%= f.add_nested_fields_link :directions, '工程を追加', class: '', role: 'button01' %>
+        </div>
+      </div>
+
+      <div class="summary">
+        <h2>アドバイス</h2>
+        <%= f.text_area :advice, placeholder: "アドバイスを入力", class: "form-control" %>
+      </div>
+
+      <div class="summary">
+        <h2>タグ</h2>
+        <%= text_area_tag 'recipe[recipetag_list]', @recipe.recipetag_list.join(','), placeholder: "タグをカンマ区切りで入力", class: 'form-control' %>
+      </div>
+
+      <div class="button">
+        <%= f.submit %>
+      </div>
+
+
     </div>
 
   </div>
 </div>
 
 
-  <div class="field">
-    <%= f.label :レシピ名 %>
-    <%= f.text_field :title, placeholder: "レシピ名", class: "form-control" %>
-    <%= f.label :カテゴリID %>
-    <%= f.text_field :category_id, placeholder: "カテゴリID", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :advice, placeholder: "advice", class: "form-control" %>
-  </div>
-
-
-      <table class="directions_table">
-      <h3>作り方</h3>
-        <tbody>
-          <tr>
-             <th>ステップ</th>
-             <th>写真</th>
-             <th>説明</th>
-             <th>Action</th>
-          </tr>
-          <%= f.nested_fields_for :directions, wrapper_tag: :tr do |r| %>
-              <td><%= r.number_field   :step,     class: 'form-control' %></td>
-              <td>
-                <div class="field">
-                  <%= r.file_field :image %>
-                  <%= r.hidden_field :image_cache %>
-                </div>
-              </td>
-              <td><%= r.text_field   :text,     class: 'form-control' %></td>
-              <td><%= r.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button02' %></td>
-          <% end %>
-        </tbody>
-      </table>
-      <%= f.add_nested_fields_link :directions, 'Add new', class: 'btn btn-primary', role: 'button02' %>
-
-
     <p class="recipe_p" >てすと</p>
     <input type="button" value="ボタン" class="recipe_button">
 
-  <div class="field">
-    <%= f.label :recipetag_list, "タグ（カンマ区切り）" %><br>
-    <%= text_field_tag 'recipe[recipetag_list]', @recipe.recipetag_list.join(',') %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
 <% end %>
