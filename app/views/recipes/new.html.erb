@@ -5,18 +5,60 @@
 </div>
 
 <div class="index">
+  <div class="new">
 
-  <div class="detail_photo">
-    <div class="detail_photo_flame">
-      <% if @recipe.image? %>
-        <%= image_tag (@recipe.image.url :class=>"image_new") %>
-      <% else %>
-        <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
-      <% end %>
-      <h1> <%= f.text_field :title, placeholder: "レシピ名を入力", class: "form_new" %> </h1>
+    <div class="detail_photo">
+      <div class="detail_photo_flame">
+        <% if @recipe.image? %>
+          <%= image_tag (@recipe.image.url :class=>"image_new") %>
+        <% else %>
+          <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
+        <% end %>
+        <h1> <%= f.text_field :title, placeholder: "レシピ名を入力", class: "form_new" %> </h1>
+      </div>
+      <!-- 追加箇所 開始 -->
+      <div class="photo_button">
+        <div class="field">
+          <% if @recipe.image? %>
+            <div class="thumbnail">
+              <%= image_tag @recipe.image.url %>
+            </div>
+          <% end %><br>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+        <!-- 追加箇所 終了 -->
+      </div>
     </div>
-  </div>
 
+    <div class="new_table">
+      <div class="summary">
+        <h2>説明</h2>
+        <%= f.text_area :summary, placeholder: "説明を入力", class: "form-control" %>
+      </div>
+      <div class="ingredients">
+        <h2>材料</h2>
+        <table class="ingredients_table">
+          <tbody>
+            <tr>
+               <th>ステップ</th>
+               <th>材料</th>
+               <th>分量</th>
+               <th>Action</th>
+            </tr>
+            <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
+                <td><%= q.number_field   :step,     class: 'form-control_step' %></td>
+                <td><%= q.text_field   :name,     class: 'form-control_name' %></td>
+                <td><%= q.text_field   :quantity, class: 'form-control_name' %></td>
+                <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button01' %></td>
+            <% end %>
+          </tbody>
+        </table>
+        <%= f.add_nested_fields_link :ingredients, 'Add new', class: 'btn btn-primary', role: 'button01' %>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -28,30 +70,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :概要 %>
-    <%= f.text_area :summary, placeholder: "概要", class: "form-control" %>
     <%= f.text_area :advice, placeholder: "advice", class: "form-control" %>
   </div>
 
-    <table class="ingredients_table">
-    <h3>材料</h3>
-        <tbody>
-          <tr>
-             <th>材料</th>
-             <th>分量</th>
-             <th>ステップ</th>
-             <th>Action</th>
-          </tr>
-
-          <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
-              <td><%= q.text_field   :name,     class: 'form-control' %></td>
-              <td><%= q.text_field   :quantity, class: 'form-control' %></td>
-              <td><%= q.number_field   :step,     class: 'form-control' %></td>
-              <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button01' %></td>
-          <% end %>
-        </tbody>
-      </table>
-      <%= f.add_nested_fields_link :ingredients, 'Add new', class: 'btn btn-primary', role: 'button01' %>
+    
 
       <table class="directions_table">
       <h3>作り方</h3>
@@ -80,28 +102,6 @@
 
     <p class="recipe_p" >てすと</p>
     <input type="button" value="ボタン" class="recipe_button">
-
-  <!-- 追加箇所 開始 -->
-  <div class="field">
-    <% if @recipe.image? %>
-      <div class="thumbnail">
-        <%= image_tag @recipe.image.url %>
-      </div>
-    <% end %><br>
-    <%= f.label :完成画像 %><br>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
-  <div class="field">
-    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
-    <% if @recipe.persisted? && @recipe.image? %>
-      <label>
-        <%= f.check_box :remove_image %>
-        画像を削除
-      </label>
-    <% end %>
-  </div>
-  <!-- 追加箇所 終了 -->
 
   <div class="field">
     <%= f.label :recipetag_list, "タグ（カンマ区切り）" %><br>

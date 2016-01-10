@@ -48,6 +48,7 @@ group :development do
   gem 'pry-rails'
   gem 'devise'
   gem "carrierwave" #画像UP
+  gem 'mini_magick', '3.8.0' #caeeierwaveの画像加工用
   gem "nested_form_fields" #動的に複数モデルに保存
   gem 'acts-as-taggable-on', '~> 3.4' #タグ
   gem 'awesome_nested_set' #カテゴリ
