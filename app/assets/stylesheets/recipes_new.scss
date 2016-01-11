@@ -55,11 +55,18 @@
   .add_button{
     text-align: center;
   }
+
 }
 
+  .button{
+    width: 100%;
+    input{
+      width: 100%;
+    }
+  }
 
 .image_new{
-  opacity: 0.2;
+  // opacity: 0.2;
 }
 
 .form_new{

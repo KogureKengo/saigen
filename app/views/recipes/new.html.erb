@@ -12,7 +12,7 @@
         <% if @recipe.image? %>
           <%= image_tag (@recipe.image.url :class=>"image_new") %>
         <% else %>
-          <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
+          <%= image_tag("dish.jpg",:id=>"img_prev",:alt=>"dish", :class=>"image_new") %>
         <% end %>
         <h1> <%= f.text_field :title, placeholder: "レシピ名を入力", class: "form_new" %> </h1>
       </div>
@@ -24,7 +24,7 @@
               <%= image_tag @recipe.image.url %>
             </div>
           <% end %><br>
-          <%= f.file_field :image, class: "recipe_button"%>
+          <%= f.file_field :image, class: "recipe_button", type:"file", onchange:"readURL(this);"%>
           <%= f.hidden_field :image_cache %>
         </div>
         <!-- 追加箇所 終了 -->
@@ -65,7 +65,7 @@
 
             <%= f.nested_fields_for :directions, wrapper_tag: :tr do |r| %>
               <td>
-                <%= r.number_field   :step, placeholder: "1",class: 'form-control_number' %>
+                <%= r.number_field   :step, value: "0",class: 'form-control_number' %>
               </td>
               <td>
                 <%= r.text_field   :text, placeholder: "説明", class: 'form-control_name' %>
@@ -73,18 +73,19 @@
                   <% if @recipe.image? %>
                     <%= image_tag (@recipe.image.url :class=>"image_new") %>
                   <% else %>
-                    <%= image_tag("dish.jpg",:alt=>"dish", :class=>"image_new") %>
+                    <%= image_tag("dish.jpg",:id=>"img_prev2",:alt=>"dish", :class=>"image_new") %>
                   <% end %>
-                  <%= r.file_field :image %>
+                  <%= r.file_field :image ,type:"file", onchange:"readURL2(this);"%>
                   <%= r.hidden_field :image_cache %>
                 </div>
               </td>
-              <td><%= r.remove_nested_fields_link '☓', class: 'form-control_name', role: 'button02' %></td>
+              <td><%= r.remove_nested_fields_link '☓', class: 'form-control_name', role: 'button02'%>
+              </td>
             <% end %>
           </tbody>
         </table>
         <div class="add_button">
-          <%= f.add_nested_fields_link :directions, '工程を追加', class: '', role: 'button01' %>
+          <%= f.add_nested_fields_link :directions, '工程を追加', class: 'add', id: 'addBtn', role: 'button01' %>
         </div>
       </div>
 
@@ -99,7 +100,7 @@
       </div>
 
       <div class="button">
-        <%= f.submit %>
+        <%= f.submit "レシピを投稿する！"%>
       </div>
 
 
@@ -108,9 +109,11 @@
   </div>
 </div>
 
-
     <p class="recipe_p" >てすと</p>
-    <input type="button" value="ボタン" class="recipe_button">
+    <div class="recipe_p2">
+      aa
+    </div>
+    <input type="button" value="ボタン" class="recipe_button_test">
 
 
 
