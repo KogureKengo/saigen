@@ -63,8 +63,24 @@
         <table class="ingredients_table">
           <tbody>
 
-            <%= f.nested_fields_for :directions, wrapper_tag: :ul do |r| %>
-              
+            <%= f.nested_fields_for :directions, wrapper_tag: :tr do |r| %>
+              <td>
+                <%= r.number_field   :step, value: "0",class: 'form-control_number' %>
+              </td>
+              <td>
+                <%= r.text_field   :text, placeholder: "説明", class: 'form-control_name' %>
+                <div class="field">
+                  <% if @recipe.image? %>
+                    <%= image_tag (@recipe.image.url :class=>"image_new") %>
+                  <% else %>
+                    <%= image_tag("dish.jpg",:id=>"img_prev2",:alt=>"dish", :class=>"image_new") %>
+                  <% end %>
+                  <%= r.file_field :image ,type:"file", onchange:"readURL2(this);"%>
+                  <%= r.hidden_field :image_cache %>
+                </div>
+              </td>
+              <td><%= r.remove_nested_fields_link '☓', class: 'form-control_name', role: 'button02'%>
+              </td>
             <% end %>
           </tbody>
         </table>
