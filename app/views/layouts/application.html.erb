@@ -32,6 +32,17 @@
     <%= select_tag :customer_id, options_from_collection_for_select(Category.all, :id, :name) ,:class=>"select_menu"%>
     </div>
 
+    <%= form_tag('/recipes/search', method: :get) do %>
+    <div class="search">
+      <input class="inp-search" name="keyword" placeholder="レシピ名で検索" type="text" >
+        <button class="btn-search" title="検索" type="submit">
+          <i class="icon-search"></i>
+          検索
+        </button>
+      </input>
+    </div>
+    <% end %>
+
 
     </nav>
   </div>

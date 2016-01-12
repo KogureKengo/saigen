@@ -9,6 +9,10 @@ html{
   margin: 0;
 }
 
+.ceter{
+  text-align: center;
+}
+
 .left {
   float: left;
 }
@@ -25,7 +29,6 @@ html{
   text-align: center;
   background-color: #FFFFF0;
   border: 1px solid  #C1C1C1;
-  margin: 10px;
 }
 
 .clearfix:after {
@@ -63,8 +66,6 @@ html{
   width: 100%;
 }
 
-
-
 .globalnav__menu {
   width: 100%;
   background-color: #FFFFF0;
@@ -78,4 +79,13 @@ html{
 .entry_button{
   list-style: none;
   float: right;
+}
+
+.search{
+  width: 100%;
+  text-align: center;
+
+  input{
+    width: 50%;
+  }
 }

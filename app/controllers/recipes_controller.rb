@@ -18,6 +18,9 @@ class RecipesController < ApplicationController
     redirect_to controller: :recipes, action: :index
   end
 
+  def search
+    @recipes = Recipe.where('title LIKE(?)',"%#{params[:keyword]}%").limit(20)
+  end
 
   private
   def recipe_create_params

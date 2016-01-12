@@ -12,7 +12,7 @@
       <p> <%= simple_format(h(@recipe.summary)) %> </p>
       <div class="right">
         カテゴリ：
-        <a href="/categories/index" ><%= @recipe.category.name %></a>
+        <a href=<%="/categories/#{@recipe.category.id}"%> class="right"><%= @recipe.category.name %></a>
       </div>
     </div>
   </div>
@@ -77,6 +77,7 @@
       </div>
       <div class="tag_list">
         <%= render 'recipes/tag_list', tag_list: @recipe.recipetag_list %>
+        <%= render 'recipes/related_recipes', recipes: @recipe.find_related_recipetags %>
       </div>
     </div>
 
