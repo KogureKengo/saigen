@@ -34,22 +34,28 @@ function readURL2(input) {
 var lastNumber = 1;
 
 $(document).on('fields_added.nested_form_fields', function(event, params) {
-  function changeValOfLastRecipe() {
-    var $lastInput = $('.form-control_number').last();
-    $lastInput.val(lastNumber);
-    lastNumber++;
-  }
+  // function changeValOfLastRecipe() {
+  //   var $lastInput = $('.form-control_number').last();
+  //   // $lastInput.val(lastNumber);
+  //   lastNumber++;
+  // }
 
   $(function(){
       $('.ingredients table td img').each(function(i){
           $(this).attr('id','element' + (i+1));
       });
   });
-  if (event.type === "fields_added") {
-    changeValOfLastRecipe();
-  }
+  $(function(){
+      $('.ingredients table td .form-control_number').each(function(i){
+          $(this).attr('value',(i+1));
+      });
+  });
+
+  // if (event.type === "fields_added") {
+  //   changeValOfLastRecipe();
+  // }
 });
 
-// $(document).on('fields_added.nested_form_fields', function(event, params) {
+// $(document).on('fields_removed.nested_form_fields', function(event, params) {
 //   console.log(event)
 // })

@@ -42,7 +42,9 @@ $recipeFontSize: 15px;
         position: absolute;
         bottom: 0px;
         .index_title{
+          overflow: hidden;
           font-weight: bold;
+          height: 1.5em;
         }
         .index_summary{
           overflow: hidden;
