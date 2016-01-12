@@ -18,42 +18,37 @@
           <%= link_to(image_tag("logo.png",:alt=>"ロゴ", :class=>"img_logo"), {:controller => '/recipes', :action => 'index'}) %>
         </li>
         <% if user_signed_in? %>
-          <li class='right'>
-            <%= link_to 'ログアウト', "/users/sign_out", method: :delete %>
-          </li>
+          <li class="right">
+            <a href="/users/<%= current_user.id %>">MyPage</a>
         <% else %>
           <li class='right'>
             <%= link_to 'ログイン', "/users/sign_in", method: :get %>
           </li>
         <% end %>
-          <li class='right'>
-            <%= link_to '投稿する', "/recipes/new", method: :get %>
-          </li>
       </ul>
     </div>
 
     <div class="div_menu">
-        <form accept-charset="UTF-8" action="" method="get">
-            <select id="area_id" class="select_menu" onchange="this.form.submit()">
-              <option selected="selected" value="/">メニュー</option>
-              <option value="/categories/">Categoryから探す</option>
-            </select>
-        </form>
+    <%= select_tag :customer_id, options_from_collection_for_select(Category.all, :id, :name) ,:class=>"select_menu"%>
     </div>
 
-    <script type="text/javascript">
-      $(function(){
-          $('#area_id').change(function() {
-              $("form").attr('action', $(this).val());
-              $("form").submit();
-          });
-      });
-    </script>
 
     </nav>
   </div>
 
   <%= yield %>
 
+  <script type="text/javascript">
+    $(function(){
+    $('#customer_id').on('change', function () {
+       var url = "/categories/" + $(this).val()
+        if (url) {
+            window.location.replace(url);
+        }
+        return false;
+    });
+  });
+
+</script>
 </body>
 </html>

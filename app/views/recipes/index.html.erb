@@ -15,7 +15,7 @@
             <div class="index_photo">
               <a href="/recipes/<%= recipe.id %>" class="linktxt"></a>
               <div class="index_category">
-                <a href="/categories/index" class="right"><%= recipe.category.name %></a>
+                <a href=<%="/categories/#{recipe.category.id}"%> class="right"><%= recipe.category.name %></a>
               </div>
               <% if recipe.image? %>
                 <%= image_tag (recipe.image.url :class=>"image_index") %>

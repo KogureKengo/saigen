@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @categories = Category.all
+    @category = Category.find(params[:id])
+    @recipes = @category.recipes.page(params[:page]).order("created_at DESC")
   end
 
   def category_params
