@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug'
 end
 
+  gem 'devise'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -46,12 +47,16 @@ group :development do
 
   #追加
   gem 'pry-rails'
-  gem 'devise'
-  gem "carrierwave" #画像UP
-  gem 'mini_magick', '3.8.0' #caeeierwaveの画像加工用
-  gem "nested_form_fields" #動的に複数モデルに保存
-  gem 'acts-as-taggable-on', '~> 3.4' #タグ
-  gem 'awesome_nested_set' #カテゴリ
+  gem 'carrierwave'
+  #画像UP
+  gem 'mini_magick', '3.8.0'
+  #caeeierwaveの画像加工用
+  gem "nested_form_fields"
+  #動的に複数モデルに保存
+  gem 'acts-as-taggable-on', '~> 3.4'
+  #タグ
+  gem 'awesome_nested_set'
+  #カテゴリ
   gem 'kaminari'
 end
 
