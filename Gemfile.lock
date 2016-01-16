@@ -198,7 +198,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick (= 3.8.0)
-  mysql2 (>= 0.3.2)
+  mysql2 (>= 0.3.18)
   nested_form_fields
   pry-rails
   rails (= 4.2.5)
