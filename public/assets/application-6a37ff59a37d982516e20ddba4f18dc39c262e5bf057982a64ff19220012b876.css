@@ -1,0 +1,485 @@
+/* line 5, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.logo .logo_img {
+  width: 40%;
+}
+/* line 8, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.logo img {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}
+
+/* line 19, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.search {
+  width: 100%;
+}
+/* line 22, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.search input {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 29, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.select_menu {
+  width: 90%;
+  padding: 3px;
+  margin: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  background: #eee;
+  background: url(arrow01.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%, #efebe1 100%);
+  background: url(arrow01.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%, #efebe1 100%);
+  background-size: 20px, 100%;
+}
+@media only screen and (min-width: 640px) {
+  /* line 29, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+  .select_menu {
+    display: none;
+  }
+}
+
+/* line 48, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.login_button {
+  list-style: none;
+  float: right;
+}
+
+/* line 53, /Users/tech-camp/projects/saigen/app/assets/stylesheets/header.scss */
+.entry_button {
+  list-style: none;
+  float: right;
+}
+/* line 1, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.paginate {
+  text-align: center;
+}
+
+/* line 5, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination a, .pagination span.current, .pagination span.gap {
+  padding: 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+/* line 15, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination {
+  border-left: 1px solid #ddd;
+}
+/* line 17, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination .first {
+  padding: 0;
+  float: none;
+  border: none;
+}
+/* line 22, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination .prev {
+  padding: 0;
+  float: none;
+  border: none;
+}
+/* line 27, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination .page {
+  padding: 0;
+  float: none;
+  border: none;
+}
+/* line 32, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination .next {
+  padding: 0;
+  float: none;
+  border: none;
+}
+/* line 37, /Users/tech-camp/projects/saigen/app/assets/stylesheets/kaminari.scss */
+.pagination .last {
+  padding: 0;
+  float: none;
+  border: none;
+}
+/* line 8, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.menu_name {
+  text-align: center;
+  background-color: #FFFFF0;
+  border: 1px solid  #C1C1C1;
+}
+
+/* line 14, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin {
+  margin: 2%;
+}
+/* line 16, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp {
+  background-color: #F2B16A;
+  border: 1px solid  #C1C1C1;
+  float: left;
+  margin: 1%;
+  width: 47%;
+  max-width: 300px;
+}
+/* line 24, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_time {
+  font-size: x-small;
+}
+/* line 27, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo {
+  position: relative;
+  height: 300px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 640px) {
+  /* line 27, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+  .index_margin .index_temp .index_photo {
+    height: 150px;
+  }
+  /* line 32, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+  .index_margin .index_temp .index_photo img {
+    max-height: 150px;
+  }
+}
+/* line 37, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo img {
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 44, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo .index_category {
+  position: absolute;
+  font-size: x-small;
+  right: 0px;
+  background-color: white;
+  border: 1px solid  #C1C1C1;
+}
+/* line 51, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo .index_about {
+  background-color: rgba(250, 240, 230, 0.7);
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+/* line 56, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo .index_about .index_title {
+  overflow: hidden;
+  font-weight: bold;
+  height: 1.5em;
+}
+/* line 61, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo .index_about .index_summary {
+  overflow: hidden;
+  height: 30px;
+  line-height: 15px;
+  font-size: 15px;
+}
+/* line 68, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes.scss */
+.index_margin .index_temp .index_photo .linktxt {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* line 3, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.new .new_table {
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+/* line 8, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.new textarea {
+  border: none;
+  margin: 0.5em;
+  background-color: white;
+  font-size: large;
+  width: 95%;
+  height: 3em;
+}
+/* line 17, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.new h2 {
+  margin: 0;
+  font-size: large;
+  width: 95%;
+  padding: 3px;
+  margin-bottom: 3px;
+  border: 1px solid #E8D8C9;
+  border-radius: 3px;
+}
+/* line 25, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.new select {
+  width: 95%;
+  margin: 1em;
+}
+
+/* line 32, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients {
+  width: 95%;
+}
+/* line 34, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 0.5em;
+}
+/* line 38, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table .form-control_name {
+  width: 100%;
+}
+/* line 41, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table td {
+  text-align: center;
+}
+/* line 43, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table td input {
+  line-height: 2em;
+  height: 2em;
+}
+/* line 47, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table td img {
+  width: 100%;
+}
+/* line 51, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .ingredients_table .form-control_number {
+  width: 2em;
+}
+/* line 55, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.ingredients .add_button {
+  text-align: center;
+}
+
+/* line 61, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.button {
+  width: 100%;
+}
+/* line 63, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.button input {
+  width: 100%;
+}
+
+/* line 72, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_new.scss */
+.form_new {
+  border: none;
+  margin-left: 0.5em;
+  font-size: 1em;
+  background-color: transparent;
+}
+@charset "UTF-8";
+/* line 2, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+textarea {
+  max-width: 475px;
+}
+
+/* line 6, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail {
+  max-width: 500px;
+}
+
+/* line 11, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_photo .detail_photo_flame {
+  position: relative;
+}
+/* line 13, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_photo .detail_photo_flame img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+/* line 18, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_photo .detail_photo_flame h1 {
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  color: #6B3E08;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(252, 255, 234, 0.7)), to(#FCFFEA));
+  /* Safari,Google Chrome用 */
+}
+/* line 27, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_photo p {
+  font-size: large;
+  font-style: oblique;
+}
+
+/* line 33, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_list {
+  margin: 5px;
+}
+/* line 36, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_list .detail_ingredients_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 39, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_list .detail_ingredients_table td {
+  background-color: #fff;
+  border-width: 1px 0px;
+  /* 上下だけ引く */
+  border-color: #b9b9b9;
+  /* 線色：緑 */
+  border-style: solid;
+  /* 線種：実線 */
+  padding: 0.3em;
+  /* セル内側の余白 */
+}
+/* line 46, /Users/tech-camp/projects/saigen/app/assets/stylesheets/recipes_show.scss */
+.detail_list .detail_ingredients_table td img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+/* line 3, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 9, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+html {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 15, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.all {
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 21, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.index {
+  background-color: #FCFFEA;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 27, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.contents {
+  display: table;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+/* line 33, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.contents .sidebar {
+  display: table-cell;
+  background-color: #FFFFF0;
+  height: 100%;
+  width: 200px;
+}
+@media only screen and (max-width: 640px) {
+  /* line 33, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+  .contents .sidebar {
+    display: none;
+  }
+}
+/* line 42, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.contents .main {
+  display: table-cell;
+}
+/* line 46, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.contents .rightbar {
+  display: table-cell;
+  background-color: #FFFFF0;
+  height: 100%;
+  width: 200px;
+}
+@media only screen and (max-width: 1050px) {
+  /* line 46, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+  .contents .rightbar {
+    display: none;
+  }
+}
+
+/* line 58, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.globalnav__menu {
+  background-color: #FFFFF0;
+}
+
+/* line 62, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.table {
+  display: table;
+}
+
+/* line 66, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.table-cell {
+  display: table-cell;
+}
+
+/* line 70, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.center {
+  text-align: center;
+}
+
+/* line 74, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.left {
+  float: left;
+}
+
+/* line 78, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.right {
+  float: right;
+}
+
+/* line 82, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.width_fit {
+  width: 100%;
+}
+
+/* line 86, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.td_right {
+  text-align: right;
+}
+
+/* line 90, /Users/tech-camp/projects/saigen/app/assets/stylesheets/style.scss */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/* line 5, /Users/tech-camp/projects/saigen/app/assets/stylesheets/users.scss */
+.user_div {
+  width: 100%;
+  text-align: center;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+@media #{$small} {
+    //640px以下
+}
+
+@media #{$middle} {
+    //641px〜959pxまで
+}
+@media #{$large} {
+    //960px以上
+}
+
+
+
