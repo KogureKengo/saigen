@@ -5,49 +5,73 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
 
-  <div class="globalnav__menu">
+<div class="all">
+
+
+  <div class="globalnav__menu width_fit">
     <nav class="globalnav">
+      <div class="logo">
+        <div class='clearfix'>
+          <div class="logo_img left">
+            <%= link_to(image_tag("logo.png",:alt=>"ロゴ", :class=>"img_logo"), {:controller => '/recipes', :action => 'index'}) %>
+          </div>
+          <div class="right">
+            <div class="mypage right width_fit">
+              <% if user_signed_in? %>
+                  <a href="/users/<%= current_user.id %>" class="right">MyPage</a>
+              <% else %>
+                  <%= link_to 'ログイン', "/users/sign_in", method: :get  %>
+              <% end %>
+            </div>
+            <div class="search width_fit">
+              <%= form_tag('/recipes/search', method: :get,:class=>"form-search") do %>
+              <div class="right">
+                <button class="btn-search" title="検索" type="submit">
+                <i class="icon-search">検索</i></button>
+              </div>
+              <div class="right">
+                <input class="inp-search" name="keyword" placeholder="レシピ名で検索" type="text" >
+              </div>
+              </button>
+              <% end %>
+            </div>
+          </div>
 
-    <div class="logo">
-      <ul class='clearfix'>
-        <li class='left'>
-          <%= link_to(image_tag("logo.png",:alt=>"ロゴ", :class=>"img_logo"), {:controller => '/recipes', :action => 'index'}) %>
-        </li>
-        <% if user_signed_in? %>
-          <li class="right">
-            <a href="/users/<%= current_user.id %>">MyPage</a>
-        <% else %>
-          <li class='right'>
-            <%= link_to 'ログイン', "/users/sign_in", method: :get %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="div_menu">
-    <%= select_tag :customer_id, options_from_collection_for_select(Category.all, :id, :name) ,:class=>"select_menu"%>
-    </div>
-
-    <%= form_tag('/recipes/search', method: :get) do %>
-    <div class="search">
-      <input class="inp-search" name="keyword" placeholder="レシピ名で検索" type="text" >
-        <button class="btn-search" title="検索" type="submit">
-          <i class="icon-search"></i>
-          検索
-        </button>
-      </input>
-    </div>
-    <% end %>
-
-
+        </div>
+      </div>
+      <div class="div_menu">
+      <%= select_tag :customer_id, options_from_collection_for_select(@categories, :id, :name) ,:class=>"select_menu"%>
+      </div>
     </nav>
   </div>
 
-  <%= yield %>
+  <ul class="contents">
+    <li class="sidebar">
+      <div>
+      <h3>カテゴリ一覧</h3>
+        <ul>
+          <% @categories.each do |category| %>
+            <% unless category.name == "カテゴリ" %>
+              <li>
+                  <a href="/categories/<%= category.id %>" class="right"><%= category.name %></a>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </li>
+    <li class="main">
+      <%= yield %>
+    </li>
+    <li class="rightbar">
+    </li>
+  </ul>
+
 
   <script type="text/javascript">
     $(function(){
@@ -59,7 +83,8 @@
         return false;
     });
   });
+  </script>
 
-</script>
+</div>
 </body>
 </html>

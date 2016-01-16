@@ -6,6 +6,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :category
   # :destroyオプションを追加することで、destoryメソッドで注文を削除したら、Railsがその注文に紐づいている請求書も自動で削除してくれます。
 
+  paginates_per 12  # 1ページあたり12項目表示
+
   acts_as_ordered_taggable
   acts_as_ordered_taggable_on :recipetags
 

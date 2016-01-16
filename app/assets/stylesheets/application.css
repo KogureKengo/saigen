@@ -14,12 +14,20 @@
  *= require_self
  */
 
-$(function(){
-  $('#customer_id').bind('change', function () {
-     var url = "/categories/" + $(this).val()
-      if (url) {
-          window.location.replace(url);
-      }
-      return false;
-  });
-});
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+@media #{$small} {
+    //640px以下
+}
+
+@media #{$middle} {
+    //641px〜959pxまで
+}
+@media #{$large} {
+    //960px以上
+}
+
+
+
