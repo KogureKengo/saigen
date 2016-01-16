@@ -3,9 +3,8 @@
     新着一覧
   </div>
 
-  <div class="index clearfix">
-
-
+<div class="index">
+  <div class="clearfix">
     <% @recipes.each do |recipe| %>
       <div class="index_margin">
         <div class="index_temp">
@@ -34,13 +33,15 @@
 
             </div>
         </div>
-    </div>
+      </div>
     <% end %>
-
-
   </div>
 
+  <div class="paginate">
+    <%= paginate @recipes %>
+  </div>
+</div>
+
   <%= page_entries_info @recipes %>
-  <%= paginate @recipes %>
 
 </div>

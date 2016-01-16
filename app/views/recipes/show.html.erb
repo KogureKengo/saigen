@@ -8,6 +8,18 @@
       <% end %>
       <h1> <%= @recipe.title %> </h1>
     </div>
+    <% if user_signed_in? && current_user.id == @recipe.user_id %>
+      <div class="edit">
+        <ul class="edit_list table width_fit">
+          <li class="table-cell">
+            <%= link_to '削除', "/recipes/#{@recipe.id}", method: :delete %>
+          </li>
+          <li class="table-cell">
+            編集
+          </li>
+        </ul>
+      </div>
+    <% end %>
     <div class="detail">
       <p> <%= simple_format(h(@recipe.summary)) %> </p>
       <div class="right">
@@ -27,8 +39,8 @@
           <tbody>
             <% @recipe.ingredients.each do |ingredient| %>
             <tr>
-                <td><%= ingredient.name %></td>
-                <td class="td_right"><%= ingredient.quantity %></td>
+              <td><%= ingredient.name %></td>
+              <td class="td_right"><%= ingredient.quantity %></td>
             </tr>
             <% end %>
           </tbody>

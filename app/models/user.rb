@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :nickname, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :recipes, dependent: :destroy
+  has_many :recipes
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

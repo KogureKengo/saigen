@@ -15,7 +15,7 @@ html{
 .all{
   overflow: hidden;
   overflow-x : hidden;
-overflow-y : auto;
+  overflow-y : auto;
 }
 
 .index{
@@ -59,7 +59,15 @@ overflow-y : auto;
   background-color: #FFFFF0;
 }
 
-.ceter{
+.table{
+  display:table;
+}
+
+.table-cell{
+  display:table-cell;
+}
+
+.center{
   text-align: center;
 }
 
