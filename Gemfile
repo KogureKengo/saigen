@@ -53,9 +53,9 @@ group :development do
   gem 'acts-as-taggable-on', '~> 3.4' #タグ
   gem 'awesome_nested_set' #カテゴリ
   gem 'kaminari'
-
-  group :production, :staging do
-  gem 'rails_12factor'
 end
+
+group :production, :staging do
+  gem 'rails_12factor'
 end
 
